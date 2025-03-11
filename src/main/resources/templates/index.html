@@ -66,7 +66,7 @@
                 })
                 showInfo("Remapped successfully! Entries: " + result.remappedEntries);
             } else {
-                showError(result.errorMessage);
+                showError(maybeRemapResponse.errorMessage);
             }
         } catch (error) {
             showError(error.message);
