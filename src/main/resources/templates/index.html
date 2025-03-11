@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mc Remapper</title>
+    <link rel="icon" href="/images/mcremapper_icon.png" type="image/png">
+    <link rel="stylesheet" href="/css/mc_remapper.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/eclipse.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/clike/clike.min.js"></script>
+</head>
+<body>
+<header class="content-pane">
+    <label for="mc-version-selector">> Select Minecraft version:</label>
+    <select class="mc-version-selector" id="mc-version-selector">
+        <option th:each="mcVersion : ${mcVersions}"
+                th:value="${mcVersion}"
+                th:text="${mcVersion}"></option>
+    </select>
+    <label>> Paste your mapped code in editor. It will automatically replace mappings</label>
+</header>
+<main id="editor" class="editor"></main>
+<footer class="content-pane">
+    <label id="output-log-label">></label>
+</footer>
+<script th:inline="javascript">
+    'use strict'
+    const maybeRemapApi = /*[[${maybeRemapApi}]]*/ "";
+
+    const codeEditor = CodeMirror(document.getElementById("editor"), {
+        mode: 'text/x-java',
+        theme: 'eclipse',
+        lineNumbers: true,
+        lineWrapping: false
+    });
+
+    const maybeRemapProcess = async (mcVersion, mappedSource) => {
+        if (maybeRemapApi === "") {
+            return;
+        }
+        showInfo("Remapping...");
+        const request = {
+            mcRemapperProviderName: mcVersion,
+            mappedSource: mappedSource
+        }
+        try {
+            const response = await fetch(maybeRemapApi, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(request)
+            });
+            const data = await response.json();
+            if (response.ok) {
+                codeEditor.setValue(data.remappedSource);
+                data.entryList.forEach((entry) => {
+                    codeEditor.markText(
+                        {line: entry.startPosition.line, ch: entry.startPosition.ch},
+                        {line: entry.endPosition.line, ch: entry.endPosition.ch},
+                        {className: "highlight"}
+                    );
+                })
+                showInfo("Remapped successfully! Entries: " + data.remappedEntries);
+            } else {
+                showError(data.errorMessage);
+            }
+        } catch (error) {
+            showError(error.message);
+            console.error(error);
+        }
+    }
+
+    const showInfo = (message) => {
+        const outputLabel = document.getElementById("output-log-label");
+        outputLabel.innerText = "> " + message;
+        outputLabel.classList.remove("error-message");
+    }
+
+    const showError = (message) => {
+        const outputLabel = document.getElementById("output-log-label");
+        outputLabel.innerText = "> " + message;
+        outputLabel.classList.add("error-message");
+    }
+
+    codeEditor.on("beforeChange", (_, change) => {
+        if (change.origin === "paste") {
+            maybeRemapProcess(document.getElementById("mc-version-selector").value, change.text.join("\n"));
+        }
+    });
+
+    document.getElementById("mc-version-selector").addEventListener("change", () => {
+        showInfo("Selected version: " + document.getElementById("mc-version-selector").value);
+        codeEditor.setValue("");
+    });
+</script>
+</body>
+</html>

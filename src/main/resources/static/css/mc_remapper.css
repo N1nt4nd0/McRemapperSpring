@@ -1,0 +1,44 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    font-family: monospace;
+    font-size: 14px;
+    height: 100%;
+    overflow: hidden;
+    background-color: aliceblue;
+}
+
+.content-pane {
+    display: flex;
+    flex-direction: column;
+    margin-inline: 8px;
+    margin-block: 8px;
+    gap: 4px;
+}
+
+.mc-version-selector {
+    font-family: monospace;
+    font-size: 14px;
+    border: 1px solid black;
+}
+
+.editor {
+    flex: 1;
+    border: 1px solid gray;
+    overflow: hidden;
+}
+
+.highlight {
+    background-color: yellow;
+}
+
+.error-message {
+    color: red;
+}
+
+.CodeMirror {
+    height: 100%;
+    font-size: 14px;
+}
