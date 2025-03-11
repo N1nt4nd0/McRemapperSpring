@@ -25,8 +25,17 @@ jobs:
       - name: Grant execute permission for Gradle
         run: chmod +x gradlew
 
-      - name: Build with Gradle
-        run: ./gradlew build --no-daemon
+      - name: Cache Gradle dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: ${{ runner.os }}-gradle-
 
       - name: Run Tests
         run: ./gradlew test --no-daemon
+
+      - name: Build Project
+        run: ./gradlew build --no-daemon
