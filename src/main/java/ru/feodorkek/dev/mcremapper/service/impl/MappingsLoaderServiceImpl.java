@@ -35,7 +35,8 @@ public class MappingsLoaderServiceImpl implements MappingsLoaderService {
                                 (existing, duplicate) -> existing));
             }
         } catch (final Exception exception) {
-            throw new McRemapperException("Exception on loading mappings from resource path: " + resourcePath);
+            throw new McRemapperException("Exception on loading mappings from resource path: " + resourcePath,
+                    exception);
         }
     }
 

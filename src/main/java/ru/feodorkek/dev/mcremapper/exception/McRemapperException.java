@@ -6,4 +6,8 @@ public class McRemapperException extends RuntimeException {
         super(message);
     }
 
+    public McRemapperException(final String message, final Throwable cause) {
+        super(message, cause);
+    }
+
 }

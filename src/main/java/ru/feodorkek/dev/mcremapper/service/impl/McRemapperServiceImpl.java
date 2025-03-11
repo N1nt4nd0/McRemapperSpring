@@ -52,11 +52,11 @@ public class McRemapperServiceImpl implements McRemapperService {
             throw new McRemapperException("Mapped source cannot be blank");
         }
         if (mappedSource.length() <= maybeRemapSourceMinLen) {
-            throw new McRemapperException("Mapped source length should be greater than "
-                    + maybeRemapSourceMinLen + " chars");
+            throw new McRemapperException(String.format("Mapped source length should be greater than %s chars",
+                    maybeRemapSourceMinLen));
         } else if (mappedSource.length() >= maybeRemapSourceMaxLen) {
-            throw new McRemapperException("Mapped source length should be less than "
-                    + maybeRemapSourceMaxLen + " chars");
+            throw new McRemapperException(String.format("Mapped source length should be less than %s chars",
+                    maybeRemapSourceMaxLen));
         }
     }
 
@@ -88,12 +88,9 @@ public class McRemapperServiceImpl implements McRemapperService {
                 }
                 matcher.appendTail(result);
             }
-            return new MaybeRemapResult(
-                    remapEntries.size(),
-                    remapEntries,
-                    result.toString());
+            return new MaybeRemapResult(remapEntries.size(), remapEntries, result.toString());
         } catch (final Exception exception) {
-            throw new McRemapperException("Exception on remapping source. Provider: " + currentProvider.getName());
+            throw new McRemapperException("Exception on remapping source", exception);
         }
     }
 
