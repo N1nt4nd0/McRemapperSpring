@@ -54,8 +54,8 @@
                 body: JSON.stringify(request)
             });
             const maybeRemapResponse = await response.json();
-            const result = maybeRemapResponse.result;
             if (response.ok) {
+                const result = maybeRemapResponse.result;
                 codeEditor.setValue(result.remappedSource);
                 result.entryList.forEach((entry) => {
                     codeEditor.markText(
