@@ -2,11 +2,11 @@ package ru.feodorkek.dev.mcremapper.service.impl;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
+import ru.feodorkek.dev.mcremapper.core.EntryPosition;
+import ru.feodorkek.dev.mcremapper.core.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
+import ru.feodorkek.dev.mcremapper.core.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.McRemapperException;
-import ru.feodorkek.dev.mcremapper.mcremapper.EntryPosition;
-import ru.feodorkek.dev.mcremapper.mcremapper.MaybeRemapResult;
-import ru.feodorkek.dev.mcremapper.mcremapper.McRemapperProvider;
-import ru.feodorkek.dev.mcremapper.mcremapper.RemapEntry;
 import ru.feodorkek.dev.mcremapper.service.McRemapperService;
 import ru.feodorkek.dev.mcremapper.util.StringUnit;
 

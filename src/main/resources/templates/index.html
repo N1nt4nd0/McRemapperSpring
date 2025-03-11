@@ -53,19 +53,20 @@
                 },
                 body: JSON.stringify(request)
             });
-            const data = await response.json();
+            const maybeRemapResponse = await response.json();
+            const result = maybeRemapResponse.result;
             if (response.ok) {
-                codeEditor.setValue(data.remappedSource);
-                data.entryList.forEach((entry) => {
+                codeEditor.setValue(result.remappedSource);
+                result.entryList.forEach((entry) => {
                     codeEditor.markText(
                         {line: entry.startPosition.line, ch: entry.startPosition.ch},
                         {line: entry.endPosition.line, ch: entry.endPosition.ch},
                         {className: "highlight"}
                     );
                 })
-                showInfo("Remapped successfully! Entries: " + data.remappedEntries);
+                showInfo("Remapped successfully! Entries: " + result.remappedEntries);
             } else {
-                showError(data.errorMessage);
+                showError(result.errorMessage);
             }
         } catch (error) {
             showError(error.message);

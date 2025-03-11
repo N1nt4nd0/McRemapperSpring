@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.mcremapper;
+package ru.feodorkek.dev.mcremapper.core;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

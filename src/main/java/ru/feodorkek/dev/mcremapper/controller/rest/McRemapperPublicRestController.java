@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.feodorkek.dev.mcremapper.business.McRemapperUseCases;
 import ru.feodorkek.dev.mcremapper.dto.MaybeRemapDtoIn;
+import ru.feodorkek.dev.mcremapper.dto.MaybeRemapDtoOut;
 import ru.feodorkek.dev.mcremapper.dto.McRemapperInfoDtoOut;
-import ru.feodorkek.dev.mcremapper.mcremapper.MaybeRemapResult;
 
 @Tag(name = "McRemapper public usages")
 @CrossOrigin
@@ -25,7 +25,7 @@ public class McRemapperPublicRestController {
 
     @Operation(summary = "Remap input minecraft source code")
     @PostMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-maybe-remap}")
-    public ResponseEntity<MaybeRemapResult> maybeRemap(
+    public ResponseEntity<MaybeRemapDtoOut> maybeRemap(
             @Valid @RequestBody final MaybeRemapDtoIn maybeRemapDtoIn) {
         return ResponseEntity.ok(mcRemapperUseCases.maybeRemap(maybeRemapDtoIn));
     }
