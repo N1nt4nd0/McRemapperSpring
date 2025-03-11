@@ -2,7 +2,6 @@ package ru.feodorkek.dev.mcremapper.controller.rest;
 
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -26,7 +25,7 @@ public class McRemapperPublicRestController {
     @Operation(summary = "Remap input minecraft source code")
     @PostMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-maybe-remap}")
     public ResponseEntity<MaybeRemapDtoOut> maybeRemap(
-            @Valid @RequestBody final MaybeRemapDtoIn maybeRemapDtoIn) {
+            @RequestBody final MaybeRemapDtoIn maybeRemapDtoIn) {
         return ResponseEntity.ok(mcRemapperUseCases.maybeRemap(maybeRemapDtoIn));
     }
 
