@@ -1,4 +1,4 @@
-name: Gradle Build & Test
+name: Gradle Pipeline
 
 on:
   push:
@@ -36,6 +36,3 @@ jobs:
 
       - name: Run Tests
         run: ./gradlew test --no-daemon
-
-      - name: Build Project
-        run: ./gradlew build --no-daemon
