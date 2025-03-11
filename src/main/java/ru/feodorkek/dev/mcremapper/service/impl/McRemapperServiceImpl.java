@@ -14,6 +14,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.regex.Matcher;
 
 @Getter
 @RequiredArgsConstructor
@@ -76,7 +77,7 @@ public class McRemapperServiceImpl implements McRemapperService {
                 while (matcher.find()) {
                     var mappedValue = matcher.group();
                     var remappedValue = currentProvider.getMappings().getOrDefault(mappedValue, mappedValue);
-                    matcher.appendReplacement(result, remappedValue);
+                    matcher.appendReplacement(result, Matcher.quoteReplacement(remappedValue));
                     if (!mappedValue.equals(remappedValue)) {
                         int newStart = matcher.start() + offset;
                         int newEnd = newStart + remappedValue.length();
