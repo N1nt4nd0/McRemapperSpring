@@ -1,13 +1,14 @@
 body, html {
     margin: 0;
     padding: 0;
+    height: 100%;
     display: flex;
     flex-direction: column;
     font-family: monospace;
     font-size: 14px;
     background-color: aliceblue;
     overflow: hidden;
-    height: 100%;
+    white-space: nowrap;
 }
 
 .content-pane {
