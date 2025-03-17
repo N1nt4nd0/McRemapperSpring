@@ -1,11 +1,8 @@
 spring:
   application:
     name: McRemapper
-  profiles:
-    active: ${MCREMAPPER_ACTIVE_PROFILE}
 
 server:
-  port: ${PORT:8080}
   servlet:
     encoding:
       force-response: true

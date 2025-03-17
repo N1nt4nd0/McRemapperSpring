@@ -22,6 +22,12 @@ public class McRemapperPublicRestController {
 
     private final McRemapperUseCases mcRemapperUseCases;
 
+    @Operation(summary = "Ping endpoint")
+    @GetMapping("${mc-remapper.web.rest.endpoints.public.ping}")
+    public ResponseEntity<String> ping() {
+        return ResponseEntity.ok("pong");
+    }
+
     @Operation(summary = "Remap input minecraft source code")
     @PostMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-maybe-remap}")
     public ResponseEntity<MaybeRemapDtoOut> maybeRemap(
