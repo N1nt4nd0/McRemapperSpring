@@ -14,29 +14,21 @@ public class McRemapperConfig {
     @Bean
     public McRemapperService mcRemapperService(final MappingsLoaderService mappingsLoaderService,
                                                final McRemapperProperties mcRemapperProperties) {
-        final var mc1710RemapperProvider = new McRemapperProvider(
-                mcRemapperProperties.getProviders().getMc1710().getName(),
-                mcRemapperProperties.getProviders().getMc1710().getRemapPattern());
-        mc1710RemapperProvider.loadMappings(mappingsLoaderService.loadMappingsFromResourcePath(
-                mcRemapperProperties.getProviders().getMc1710().getMethodsResourcePath()));
-        mc1710RemapperProvider.loadMappings(mappingsLoaderService.loadMappingsFromResourcePath(
-                mcRemapperProperties.getProviders().getMc1710().getFieldsResourcePath()));
-
-        final var mc1201RemapperProvider = new McRemapperProvider(
-                mcRemapperProperties.getProviders().getMc1201().getName(),
-                mcRemapperProperties.getProviders().getMc1201().getRemapPattern());
-        mc1201RemapperProvider.loadMappings(mappingsLoaderService.loadMappingsFromResourcePath(
-                mcRemapperProperties.getProviders().getMc1201().getMethodsResourcePath()));
-        mc1201RemapperProvider.loadMappings(mappingsLoaderService.loadMappingsFromResourcePath(
-                mcRemapperProperties.getProviders().getMc1201().getFieldsResourcePath()));
-
         final var mcRemapperService = new McRemapperServiceImpl(
                 mcRemapperProperties.getMaybeRemapSourceMinLen(),
                 mcRemapperProperties.getMaybeRemapSourceMaxLen());
-
-        mcRemapperService.registerProvider(mc1710RemapperProvider);
-        mcRemapperService.registerProvider(mc1201RemapperProvider);
-
+        for (final var propertyProvider : mcRemapperProperties.getProvidersList()) {
+            final var methodsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
+                    propertyProvider.getMethodsResourcePath());
+            final var fieldsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
+                    propertyProvider.getFieldsResourcePath());
+            final var mcRemapperProvider = new McRemapperProvider(
+                    propertyProvider.getName(),
+                    propertyProvider.getRemapPattern());
+            mcRemapperProvider.loadMappings(methodsMappings);
+            mcRemapperProvider.loadMappings(fieldsMappings);
+            mcRemapperService.registerProvider(mcRemapperProvider);
+        }
         return mcRemapperService;
     }
 
