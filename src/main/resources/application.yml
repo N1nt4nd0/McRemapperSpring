@@ -3,6 +3,7 @@ spring:
     name: McRemapper
 
 server:
+  port: ${PORT}
   servlet:
     encoding:
       force-response: true

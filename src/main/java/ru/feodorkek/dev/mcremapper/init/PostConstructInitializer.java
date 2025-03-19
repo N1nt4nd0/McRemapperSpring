@@ -17,12 +17,8 @@ public class PostConstructInitializer {
     @PostConstruct
     protected void postConstructInitialization() {
         for (final var provider : postConstructProviders) {
-            try {
-                provider.postConstruct();
-                log.info("{} successfully initialized", provider.postConstructProviderName());
-            } catch (final Exception exception) {
-                log.error("Can't initialize provider: {}", provider.postConstructProviderName(), exception);
-            }
+            provider.postConstruct();
+            log.info("{} successfully initialized", provider.postConstructProviderName());
         }
     }
 
