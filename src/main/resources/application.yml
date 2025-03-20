@@ -18,6 +18,11 @@ mc-remapper:
       remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
       methods-resource-path: /mcremapper/mappings/mc1710/methods.csv
       fields-resource-path: /mcremapper/mappings/mc1710/fields.csv
+    mc-1192:
+      name: 1.19.2
+      remap-pattern: "(m|f)_\\d+_"
+      methods-resource-path: /mcremapper/mappings/mc1192/methods.csv
+      fields-resource-path: /mcremapper/mappings/mc1192/fields.csv
     mc-1201:
       name: 1.20.1
       remap-pattern: "(m|f)_\\d+_"
