@@ -28,7 +28,7 @@
     'use strict'
     const maybeRemapApi = /*[[${maybeRemapApi}]]*/ "";
 
-    const codeEditor = CodeMirror(document.getElementById("editor"), {
+    const editor = CodeMirror(document.getElementById("editor"), {
         mode: 'text/x-java',
         theme: 'eclipse',
         lineNumbers: true,
@@ -52,12 +52,12 @@
                 },
                 body: JSON.stringify(request)
             });
-            const maybeRemapResponse = await response.json();
+            const data = await response.json();
             if (response.ok) {
-                const result = maybeRemapResponse.result;
-                codeEditor.setValue(result.remappedSource);
+                const result = data.result;
+                editor.setValue(result.remappedSource);
                 result.entryList.forEach((entry) => {
-                    codeEditor.markText(
+                    editor.markText(
                         {line: entry.startPosition.line, ch: entry.startPosition.ch},
                         {line: entry.endPosition.line, ch: entry.endPosition.ch},
                         {className: "highlight"}
@@ -65,12 +65,16 @@
                 })
                 showInfo("Remapped successfully! Entries: " + result.remappedEntries);
             } else {
-                showError(maybeRemapResponse.errorMessage);
+                showError(data.errorMessage);
             }
         } catch (error) {
             showError(error.message);
             console.error(error);
         }
+    }
+
+    const clearEditor = () => {
+        editor.setValue("");
     }
 
     const showInfo = (message) => {
@@ -85,7 +89,7 @@
         outputLabel.classList.add("error-message");
     }
 
-    codeEditor.on("beforeChange", (_, change) => {
+    editor.on("beforeChange", (_, change) => {
         if (change.origin === "paste") {
             maybeRemapProcess(document.getElementById("mc-version-selector").value, change.text.join("\n"));
         }
@@ -93,7 +97,7 @@
 
     document.getElementById("mc-version-selector").addEventListener("change", () => {
         showInfo("Selected version: " + document.getElementById("mc-version-selector").value);
-        codeEditor.setValue("");
+        clearEditor();
     });
 </script>
 </body>
