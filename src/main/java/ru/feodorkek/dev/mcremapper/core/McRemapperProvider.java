@@ -32,7 +32,7 @@ public class McRemapperProvider implements Comparable<McRemapperProvider> {
 
     @Override
     public int compareTo(@NonNull final McRemapperProvider another) {
-        return another.order + order;
+        return another.order - order;
     }
 
 }
