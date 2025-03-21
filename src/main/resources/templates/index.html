@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <title>Mc Remapper</title>
-    <link rel="icon" href="/images/mcremapper_icon.png" type="image/png">
-    <link rel="stylesheet" href="/css/mc_remapper.css">
+    <link rel="icon" href="/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/eclipse.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
@@ -56,8 +56,7 @@
             const data = await response.json();
             if (response.ok) {
                 const result = data.result;
-                editor.setValue(result.remappedSource);
-                editor.scrollTo(null, editor.getScrollInfo().height);
+                setEditorText(result.remappedSource);
                 result.entryList.forEach((entry) => {
                     editor.markText(
                         {line: entry.startPosition.line, ch: entry.startPosition.ch},
@@ -75,6 +74,15 @@
         } finally {
             releaseEditor();
         }
+    }
+
+    const clearEditor = () => {
+        setEditorText("");
+    }
+
+    const setEditorText = (text) => {
+        editor.setValue(text);
+        editor.scrollTo(null, editor.getScrollInfo().height);
     }
 
     const blockEditor = () => {
@@ -106,8 +114,8 @@
     });
 
     document.getElementById("mc-version-selector").addEventListener("change", () => {
-        showInfo("Selected version: " + document.getElementById("mc-version-selector").value);
-        editor.setValue("");
+        showInfo("Selected minecraft version: " + document.getElementById("mc-version-selector").value);
+        clearEditor();
     });
 </script>
 </body>
