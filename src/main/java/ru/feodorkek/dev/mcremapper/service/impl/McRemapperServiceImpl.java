@@ -27,7 +27,10 @@ public class McRemapperServiceImpl implements McRemapperService {
 
     @Override
     public List<String> getRegisteredProviderNames() {
-        return providers.keySet().stream().toList();
+        return providers.values().stream()
+                .sorted()
+                .map(McRemapperProvider::getName)
+                .toList();
     }
 
     @Override

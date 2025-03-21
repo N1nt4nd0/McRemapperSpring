@@ -20,6 +20,7 @@ public class McRemapperProperties {
     @Data
     public static class McRemapperPropertyProvider {
 
+        private int order;
         private String name;
         private Pattern remapPattern;
         private String methodsResourcePath;

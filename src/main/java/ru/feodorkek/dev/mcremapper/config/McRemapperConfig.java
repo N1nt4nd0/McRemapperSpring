@@ -17,14 +17,19 @@ public class McRemapperConfig {
         final var mcRemapperService = new McRemapperServiceImpl(
                 mcRemapperProperties.getMaybeRemapSourceMinLen(),
                 mcRemapperProperties.getMaybeRemapSourceMaxLen());
+
         for (final var propertyProvider : mcRemapperProperties.getProvidersList()) {
             final var methodsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
                     propertyProvider.getMethodsResourcePath());
+
             final var fieldsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
                     propertyProvider.getFieldsResourcePath());
+
             final var mcRemapperProvider = new McRemapperProvider(
+                    propertyProvider.getOrder(),
                     propertyProvider.getName(),
                     propertyProvider.getRemapPattern());
+
             mcRemapperProvider.loadMappings(methodsMappings);
             mcRemapperProvider.loadMappings(fieldsMappings);
             mcRemapperService.registerProvider(mcRemapperProvider);
