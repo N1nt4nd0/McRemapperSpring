@@ -14,13 +14,13 @@ mc-remapper:
   maybe-remap-source-max-len: 15000
   providers:
     mc-1201:
-      order: 0
+      order: 4
       name: 1.20.1
       remap-pattern: "(m|f)_\\d+_"
       methods-resource-path: /mcremapper/mappings/mc1201/methods.csv
       fields-resource-path: /mcremapper/mappings/mc1201/fields.csv
     mc-1192:
-      order: 1
+      order: 3
       name: 1.19.2
       remap-pattern: "(m|f)_\\d+_"
       methods-resource-path: /mcremapper/mappings/mc1192/methods.csv
@@ -31,8 +31,14 @@ mc-remapper:
       remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
       methods-resource-path: /mcremapper/mappings/mc1165/methods.csv
       fields-resource-path: /mcremapper/mappings/mc1165/fields.csv
+    mc-1122:
+      order: 1
+      name: 1.12.2
+      remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
+      methods-resource-path: /mcremapper/mappings/mc1122/methods.csv
+      fields-resource-path: /mcremapper/mappings/mc1122/fields.csv
     mc-1710:
-      order: 3
+      order: 0
       name: 1.7.10
       remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
       methods-resource-path: /mcremapper/mappings/mc1710/methods.csv
