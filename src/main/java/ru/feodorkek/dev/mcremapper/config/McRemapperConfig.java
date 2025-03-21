@@ -13,15 +13,15 @@ public class McRemapperConfig {
 
     @Bean
     public McRemapperService mcRemapperService(final MappingsLoaderService mappingsLoaderService,
-                                               final McRemapperProperties mcRemapperProperties) {
-        final var mcRemapperService = new McRemapperServiceImpl(
-                mcRemapperProperties.getMaybeRemapSourceMinLen(),
-                mcRemapperProperties.getMaybeRemapSourceMaxLen());
+                                               final McRemapperProperties remapperProperties) {
 
-        for (final var propertyProvider : mcRemapperProperties.getProvidersList()) {
+        final var mcRemapperService = new McRemapperServiceImpl(remapperProperties.getMaybeRemapSourceMinLen(),
+                remapperProperties.getMaybeRemapSourceMaxLen());
+
+        for (final var propertyProvider : remapperProperties.getProvidersList()) {
+
             final var methodsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
                     propertyProvider.getMethodsResourcePath());
-
             final var fieldsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
                     propertyProvider.getFieldsResourcePath());
 
@@ -34,6 +34,7 @@ public class McRemapperConfig {
             mcRemapperProvider.loadMappings(fieldsMappings);
             mcRemapperService.registerProvider(mcRemapperProvider);
         }
+
         return mcRemapperService;
     }
 
