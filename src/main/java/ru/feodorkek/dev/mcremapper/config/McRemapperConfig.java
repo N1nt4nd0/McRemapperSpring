@@ -18,7 +18,7 @@ public class McRemapperConfig {
         final var mcRemapperService = new McRemapperServiceImpl(remapperProperties.getMaybeRemapSourceMinLen(),
                 remapperProperties.getMaybeRemapSourceMaxLen());
 
-        for (final var propertyProvider : remapperProperties.getProvidersList()) {
+        for (final var propertyProvider : remapperProperties.getProviders().values()) {
 
             final var methodsMappings = mappingsLoaderService.loadMappingsFromResourcePath(
                     propertyProvider.getMethodsResourcePath());

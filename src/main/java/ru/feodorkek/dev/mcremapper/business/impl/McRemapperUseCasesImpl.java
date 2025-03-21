@@ -23,10 +23,8 @@ public class McRemapperUseCasesImpl implements McRemapperUseCases {
 
     @Override
     public McRemapperInfoDtoOut getInfo() {
-        return new McRemapperInfoDtoOut(
-                mcRemapperService.getRegisteredProviderNames(),
-                mcRemapperService.getMaybeRemapSourceMinLen(),
-                mcRemapperService.getMaybeRemapSourceMaxLen());
+        return new McRemapperInfoDtoOut(mcRemapperService.getRegisteredProviderNames(),
+                mcRemapperService.getMaybeRemapSourceMinLen(), mcRemapperService.getMaybeRemapSourceMaxLen());
     }
 
 }
