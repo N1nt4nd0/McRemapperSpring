@@ -36,11 +36,8 @@
     });
 
     const maybeRemapProcess = async (mcVersion, mappedSource) => {
-        if (maybeRemapApi === "") {
-            return;
-        }
         blockEditor();
-        showInfo("Remapping...");
+        showInfo("Remapping request...");
         const request = {
             mcRemapperProviderName: mcVersion,
             mappedSource: mappedSource
@@ -69,15 +66,11 @@
                 showError(data.errorMessage);
             }
         } catch (error) {
-            showError(error.message);
+            showError("Fail to send remapping request");
             console.error(error);
         } finally {
             releaseEditor();
         }
-    }
-
-    const clearEditor = () => {
-        setEditorText("");
     }
 
     const setEditorText = (text) => {
@@ -115,7 +108,7 @@
 
     document.getElementById("mc-version-selector").addEventListener("change", () => {
         showInfo("Selected minecraft version: " + document.getElementById("mc-version-selector").value);
-        clearEditor();
+        editor.setValue("");
     });
 </script>
 </body>
