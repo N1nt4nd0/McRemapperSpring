@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.List;
 
 @Data
-public class McRemapperInfoDtoOut {
+public class McRemapperInfoResponse {
 
     private final List<String> mcVersions;
     private final int sourceMinLen;

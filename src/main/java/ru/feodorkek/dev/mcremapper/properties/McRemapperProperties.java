@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.config.properties;
+package ru.feodorkek.dev.mcremapper.properties;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;

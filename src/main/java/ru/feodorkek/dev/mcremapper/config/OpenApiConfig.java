@@ -6,7 +6,7 @@ import io.swagger.v3.oas.models.info.Info;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.feodorkek.dev.mcremapper.config.properties.OpenApiInfoProperties;
+import ru.feodorkek.dev.mcremapper.properties.OpenApiInfoProperties;
 
 @Configuration
 @RequiredArgsConstructor

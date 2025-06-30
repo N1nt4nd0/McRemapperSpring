@@ -5,11 +5,11 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
-import ru.feodorkek.dev.mcremapper.config.properties.converters.PatternConverter;
+import ru.feodorkek.dev.mcremapper.properties.converters.PatternConverter;
 
 @Configuration
 @RequiredArgsConstructor
-public class PropertiesConverterConfig {
+public class PropertiesConvertersConfig {
 
     private final PatternConverter patternConverter;
 

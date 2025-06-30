@@ -1,11 +1,9 @@
-package ru.feodorkek.dev.mcremapper.service.impl;
+package ru.feodorkek.dev.mcremapper.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ResourceLoader;
 import org.springframework.stereotype.Service;
 import ru.feodorkek.dev.mcremapper.exception.McRemapperException;
-import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
-import ru.feodorkek.dev.mcremapper.util.StringUnit;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -21,7 +19,7 @@ public class MappingsLoaderServiceImpl implements MappingsLoaderService {
 
     @Override
     public Map<String, String> loadMappingsFromResourcePath(final String resourcePath) {
-        if (StringUnit.isBlank(resourcePath)) {
+        if (resourcePath == null || resourcePath.isBlank()) {
             throw new McRemapperException("Mapping resource path cannot be blank");
         }
         try {

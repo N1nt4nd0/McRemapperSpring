@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.config.properties.converters;
+package ru.feodorkek.dev.mcremapper.properties.converters;
 
 import lombok.NonNull;
 import org.springframework.core.convert.converter.Converter;

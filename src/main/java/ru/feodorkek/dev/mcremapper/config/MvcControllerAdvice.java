@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.config.exception;
+package ru.feodorkek.dev.mcremapper.config;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
@@ -8,7 +8,7 @@ import ru.feodorkek.dev.mcremapper.controller.mvc.MvcControllerPackage;
 
 @Slf4j
 @ControllerAdvice(basePackageClasses = MvcControllerPackage.class)
-public class MvcControllerExceptionHandler {
+public class MvcControllerAdvice {
 
     @ExceptionHandler
     public String handleException(final Exception exception, final Model model) {

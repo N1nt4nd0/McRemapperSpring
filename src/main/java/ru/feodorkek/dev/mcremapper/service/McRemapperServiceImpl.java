@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.service.impl;
+package ru.feodorkek.dev.mcremapper.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
@@ -7,8 +7,6 @@ import ru.feodorkek.dev.mcremapper.core.MaybeRemapResult;
 import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
 import ru.feodorkek.dev.mcremapper.core.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.McRemapperException;
-import ru.feodorkek.dev.mcremapper.service.McRemapperService;
-import ru.feodorkek.dev.mcremapper.util.StringUnit;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -35,7 +33,7 @@ public class McRemapperServiceImpl implements McRemapperService {
 
     @Override
     public void setCurrentProvider(final String providerName) {
-        if (StringUnit.isBlank(providerName)) {
+        if (providerName == null || providerName.isBlank()) {
             throw new McRemapperException("Minecraft version name cannot be blank");
         }
         if (!providers.containsKey(providerName)) {
@@ -52,7 +50,7 @@ public class McRemapperServiceImpl implements McRemapperService {
 
     @Override
     public void validateMappedSource(final String mappedSource) {
-        if (StringUnit.isBlank(mappedSource)) {
+        if (mappedSource == null || mappedSource.isBlank()) {
             throw new McRemapperException("Mapped source cannot be blank");
         }
         if (mappedSource.length() <= maybeRemapSourceMinLen) {

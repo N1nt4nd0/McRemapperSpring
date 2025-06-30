@@ -3,7 +3,7 @@ package ru.feodorkek.dev.mcremapper.dto;
 import lombok.Data;
 
 @Data
-public class ExceptionDtoOut {
+public class ExceptionResponse {
 
     private final String errorMessage;
 
