@@ -10,7 +10,7 @@ server:
 
 mc-remapper:
   maybe-remap-source-min-len: 4
-  maybe-remap-source-max-len: 15000
+  maybe-remap-source-max-len: 20000
   providers:
     mc-1201:
       order: 4
@@ -57,11 +57,3 @@ mc-remapper:
           ping: /api/public/ping
           mc-remapper-info: /api/public/mcremapper/info
           mc-remapper-maybe-remap: /api/public/mcremapper/maybe_remap
-
-springdoc:
-  swagger-ui:
-    path: /swagger
-    display-request-duration: true
-    doc-expansion: none
-  api-docs:
-    path: /api-docs

@@ -2,10 +2,10 @@ package ru.feodorkek.dev.mcremapper.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import ru.feodorkek.dev.mcremapper.core.EntryPosition;
-import ru.feodorkek.dev.mcremapper.core.MaybeRemapResult;
 import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
-import ru.feodorkek.dev.mcremapper.core.RemapEntry;
+import ru.feodorkek.dev.mcremapper.core.objects.EntryPosition;
+import ru.feodorkek.dev.mcremapper.core.objects.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.core.objects.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.McRemapperException;
 
 import java.util.ArrayList;
@@ -85,7 +85,7 @@ public class McRemapperServiceImpl implements McRemapperService {
                         offset += remappedValue.length() - mappedValue.length();
                         final var startPosition = new EntryPosition(lineNumber, newStart);
                         final var endPosition = new EntryPosition(lineNumber, newEnd);
-                        remapEntries.add(new RemapEntry(remappedValue, startPosition, endPosition));
+                        remapEntries.add(new RemapEntry(startPosition, endPosition));
                     }
                 }
                 matcher.appendTail(result);
