@@ -14,14 +14,14 @@ import ru.feodorkek.dev.mcremapper.service.McRemapperService;
 public class McRemapperPublicMvcController {
 
     private final RestPublicEndpointsProperties publicEndpoints;
-    private final McRemapperService mcRemapperService;
+    private final McRemapperService remapperService;
 
     @GetMapping("${mc-remapper.web.mvc.endpoints.public.index}")
     public String indexPage(final Model model) {
         model.addAttribute("maybeRemapApi", publicEndpoints.getMcRemapperMaybeRemap());
-        model.addAttribute("mcVersions", mcRemapperService.getRegisteredProviderNames());
-        model.addAttribute("sourceMinLen", mcRemapperService.getMaybeRemapSourceMinLen());
-        model.addAttribute("sourceMaxLen", mcRemapperService.getMaybeRemapSourceMaxLen());
+        model.addAttribute("mcVersions", remapperService.getRegisteredProviderNames());
+        model.addAttribute("sourceMinLen", remapperService.getMaybeRemapSourceMinLen());
+        model.addAttribute("sourceMaxLen", remapperService.getMaybeRemapSourceMaxLen());
         return "index";
     }
 

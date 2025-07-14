@@ -13,8 +13,9 @@ public class RestControllerAdvice {
 
     @ExceptionHandler
     public ResponseEntity<ExceptionResponse> handleException(final Exception exception) {
-        log.error("RestController error occurred", exception);
-        return ResponseEntity.internalServerError().body(new ExceptionResponse(exception.getMessage()));
+        log.error("RestController exception occurred: {}", exception.getMessage());
+        return ResponseEntity.internalServerError()
+                .body(new ExceptionResponse(exception.getClass().getSimpleName(), exception.getMessage()));
     }
 
 }

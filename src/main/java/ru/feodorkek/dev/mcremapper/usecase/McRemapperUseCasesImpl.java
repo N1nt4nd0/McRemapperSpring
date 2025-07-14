@@ -11,19 +11,19 @@ import ru.feodorkek.dev.mcremapper.service.McRemapperService;
 @RequiredArgsConstructor
 public class McRemapperUseCasesImpl implements McRemapperUseCases {
 
-    private final McRemapperService mcRemapperService;
+    private final McRemapperService remapperService;
 
     @Override
     public MaybeRemapResponse maybeRemap(final MaybeRemapRequest request) {
-        mcRemapperService.setCurrentProvider(request.getMcRemapperProviderName());
-        mcRemapperService.validateMappedSource(request.getMappedSource());
-        return new MaybeRemapResponse(mcRemapperService.maybeRemap(request.getMappedSource()));
+        remapperService.setCurrentProvider(request.getMcRemapperProviderName());
+        final var remapResult = remapperService.maybeRemap(request.getMappedSource());
+        return new MaybeRemapResponse(remapResult);
     }
 
     @Override
     public McRemapperInfoResponse getInfo() {
-        return new McRemapperInfoResponse(mcRemapperService.getRegisteredProviderNames(),
-                mcRemapperService.getMaybeRemapSourceMinLen(), mcRemapperService.getMaybeRemapSourceMaxLen());
+        return new McRemapperInfoResponse(remapperService.getRegisteredProviderNames(),
+                remapperService.getMaybeRemapSourceMinLen(), remapperService.getMaybeRemapSourceMaxLen());
     }
 
 }

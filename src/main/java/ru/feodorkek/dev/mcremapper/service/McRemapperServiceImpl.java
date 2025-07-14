@@ -49,7 +49,10 @@ public class McRemapperServiceImpl implements McRemapperService {
     }
 
     @Override
-    public void validateMappedSource(final String mappedSource) {
+    public MaybeRemapResult maybeRemap(final String mappedSource) {
+        if (currentProvider == null) {
+            throw new McRemapperException("Current provider not set");
+        }
         if (mappedSource == null || mappedSource.isBlank()) {
             throw new McRemapperException("Mapped source cannot be blank");
         }
@@ -59,13 +62,6 @@ public class McRemapperServiceImpl implements McRemapperService {
         } else if (mappedSource.length() >= maybeRemapSourceMaxLen) {
             throw new McRemapperException(String.format("Mapped source length should be less than %s chars",
                     maybeRemapSourceMaxLen));
-        }
-    }
-
-    @Override
-    public MaybeRemapResult maybeRemap(final String mappedSource) {
-        if (currentProvider == null) {
-            throw new McRemapperException("Current provider not set");
         }
         final var remapEntries = new ArrayList<RemapEntry>();
         final var result = new StringBuilder();

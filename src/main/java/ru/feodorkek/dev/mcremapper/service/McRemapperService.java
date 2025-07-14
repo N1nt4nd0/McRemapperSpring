@@ -17,8 +17,6 @@ public interface McRemapperService {
 
     int getMaybeRemapSourceMaxLen();
 
-    void validateMappedSource(String mappedSource);
-
     MaybeRemapResult maybeRemap(String mappedSource);
 
 }
