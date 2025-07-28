@@ -8,6 +8,19 @@ server:
       force-response: true
       charset: UTF-8
 
+web:
+  mvc:
+    endpoints:
+      index: /
+  rest:
+    api-info:
+      title: McRemapper API
+      version: 0.0.2
+      author-email: feodor.kekovich@gmail.com
+    endpoints:
+      ping: /api/ping
+      maybe-remap: /api/maybe_remap
+
 mc-remapper:
   maybe-remap-source-min-len: 4
   maybe-remap-source-max-len: 20000
@@ -42,17 +55,3 @@ mc-remapper:
       remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
       methods-resource-path: /mappings/mc1710/methods.csv
       fields-resource-path: /mappings/mc1710/fields.csv
-
-web:
-  mvc:
-    endpoints:
-      index: /
-  rest:
-    api-info:
-      title: McRemapper API
-      version: 0.0.2
-      author-email: feodor.kekovich@gmail.com
-    endpoints:
-      ping: /api/ping
-      info: /api/info
-      maybe-remap: /api/maybe_remap

@@ -1,34 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Mc Remapper</title>
-    <link rel="icon" href="/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/eclipse.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/clike/clike.min.js"></script>
+    <link rel='icon' href='/images/favicon.png' type='image/png'>
+    <link rel='stylesheet' href='/css/style.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/theme/eclipse.min.css'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/codemirror.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.65.14/mode/clike/clike.min.js'></script>
 </head>
 <body>
-<header class="content-pane">
-    <label for="mc-version-selector">> Select Minecraft version:</label>
-    <select class="mc-version-selector" id="mc-version-selector">
-        <option th:each="mcVersion : ${mcVersions}"
-                th:value="${mcVersion}"
-                th:text="${mcVersion}"></option>
+<header class='content-pane'>
+    <label for='mc-version-selector'>> Select Minecraft version:</label>
+    <select class='mc-version-selector' id='mc-version-selector'>
+        <option th:each='mcVersion : ${mcVersions}'
+                th:value='${mcVersion}'
+                th:text='${mcVersion}'></option>
     </select>
     <label>> Paste your mapped code in editor. It will automatically replace mappings</label>
 </header>
-<main id="editor" class="editor-container"></main>
-<footer class="content-pane">
-    <label id="output-log-label">></label>
+<main id='editor' class='editor-container'></main>
+<footer class='content-pane'>
+    <label id='output-log-label'>></label>
 </footer>
-<script th:inline="javascript">
+<script th:inline='javascript'>
     'use strict'
-    const maybeRemapApi = /*[[${maybeRemapApi}]]*/ "";
+    const maybeRemapApi = /*[[${maybeRemapApi}]]*/ '';
 
-    const editor = CodeMirror(document.getElementById("editor"), {
+    const editor = CodeMirror(document.getElementById('editor'), {
         mode: 'text/x-java',
         theme: 'eclipse',
         lineNumbers: true,
@@ -37,7 +37,7 @@
 
     const maybeRemapProcess = async (mcVersion, mappedSource) => {
         blockEditor();
-        showInfo("Remapping request...");
+        showInfo('Remapping request...');
         const request = {
             mcRemapperProviderName: mcVersion,
             mappedSource: mappedSource
@@ -58,15 +58,15 @@
                     editor.markText(
                         {line: entry.startPosition.line, ch: entry.startPosition.ch},
                         {line: entry.endPosition.line, ch: entry.endPosition.ch},
-                        {className: "highlight"}
+                        {className: 'highlight'}
                     );
                 })
-                showInfo("Remapped successfully! Entries: " + result.remappedEntries);
+                showInfo('Remapped successfully! Entries: ' + result.remappedEntries);
             } else {
                 showError(data.errorMessage);
             }
         } catch (error) {
-            showError("Fail to send remapping request");
+            showError('Fail to send remapping request');
             console.error(error);
         } finally {
             releaseEditor();
@@ -79,36 +79,36 @@
     }
 
     const blockEditor = () => {
-        editor.setOption("readOnly", true);
-        document.getElementById("editor").classList.add("editor-disabled");
+        editor.setOption('readOnly', true);
+        document.getElementById('editor').classList.add('editor-disabled');
     }
 
     const releaseEditor = () => {
-        editor.setOption("readOnly", false);
-        document.getElementById("editor").classList.remove("editor-disabled");
+        editor.setOption('readOnly', false);
+        document.getElementById('editor').classList.remove('editor-disabled');
     }
 
     const showInfo = (message) => {
-        const outputLabel = document.getElementById("output-log-label");
-        outputLabel.innerText = "> " + message;
-        outputLabel.classList.remove("error-message");
+        const outputLabel = document.getElementById('output-log-label');
+        outputLabel.innerText = '> ' + message;
+        outputLabel.classList.remove('error-message');
     }
 
     const showError = (message) => {
-        const outputLabel = document.getElementById("output-log-label");
-        outputLabel.innerText = "> " + message;
-        outputLabel.classList.add("error-message");
+        const outputLabel = document.getElementById('output-log-label');
+        outputLabel.innerText = '> ' + message;
+        outputLabel.classList.add('error-message');
     }
 
-    editor.on("beforeChange", (_, change) => {
-        if (change.origin === "paste") {
-            maybeRemapProcess(document.getElementById("mc-version-selector").value, change.text.join("\n"));
+    editor.on('beforeChange', (_, change) => {
+        if (change.origin === 'paste') {
+            maybeRemapProcess(document.getElementById('mc-version-selector').value, change.text.join('\n'));
         }
     });
 
-    document.getElementById("mc-version-selector").addEventListener("change", () => {
-        showInfo("Selected minecraft version: " + document.getElementById("mc-version-selector").value);
-        editor.setValue("");
+    document.getElementById('mc-version-selector').addEventListener('change', () => {
+        showInfo('Selected minecraft version: ' + document.getElementById('mc-version-selector').value);
+        editor.setValue('');
     });
 </script>
 </body>

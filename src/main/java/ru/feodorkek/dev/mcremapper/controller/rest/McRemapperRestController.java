@@ -11,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import ru.feodorkek.dev.mcremapper.dto.request.MaybeRemapRequest;
 import ru.feodorkek.dev.mcremapper.dto.response.MaybeRemapResponse;
-import ru.feodorkek.dev.mcremapper.dto.response.McRemapperInfoResponse;
 import ru.feodorkek.dev.mcremapper.usecase.McRemapperUseCases;
 
 @Tag(name = "McRemapper usages")
@@ -26,12 +25,6 @@ public class McRemapperRestController {
     @GetMapping("${web.rest.endpoints.ping}")
     public ResponseEntity<String> ping() {
         return ResponseEntity.ok("pong");
-    }
-
-    @Operation(summary = "get info")
-    @GetMapping("${web.rest.endpoints.info}")
-    public ResponseEntity<McRemapperInfoResponse> getInfo() {
-        return ResponseEntity.ok(useCases.getInfo());
     }
 
     @Operation(summary = "remap input minecraft source code")
