@@ -1,14 +1,14 @@
 package ru.feodorkek.dev.mcremapper.core.objects;
 
-import lombok.Data;
+import lombok.Value;
 
 import java.util.List;
 
-@Data
+@Value
 public class MaybeRemapResult {
 
-    private final int remappedEntries;
-    private final List<RemapEntry> entryList;
-    private final String remappedSource;
+    int remappedEntries;
+    List<RemapEntry> entryList;
+    String remappedSource;
 
 }

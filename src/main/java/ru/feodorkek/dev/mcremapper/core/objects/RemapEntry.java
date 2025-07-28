@@ -1,11 +1,11 @@
 package ru.feodorkek.dev.mcremapper.core.objects;
 
-import lombok.Data;
+import lombok.Value;
 
-@Data
+@Value
 public class RemapEntry {
 
-    private final EntryPosition startPosition;
-    private final EntryPosition endPosition;
+    EntryPosition startPosition;
+    EntryPosition endPosition;
 
 }

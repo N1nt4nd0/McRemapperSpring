@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import ru.feodorkek.dev.mcremapper.controller.rest.RestControllerPackage;
-import ru.feodorkek.dev.mcremapper.dto.ExceptionResponse;
+import ru.feodorkek.dev.mcremapper.dto.response.ExceptionResponse;
 
 @Slf4j
 @ControllerAdvice(basePackageClasses = RestControllerPackage.class)

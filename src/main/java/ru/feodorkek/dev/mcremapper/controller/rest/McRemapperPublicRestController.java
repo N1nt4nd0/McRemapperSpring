@@ -9,9 +9,9 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
-import ru.feodorkek.dev.mcremapper.dto.MaybeRemapRequest;
-import ru.feodorkek.dev.mcremapper.dto.MaybeRemapResponse;
-import ru.feodorkek.dev.mcremapper.dto.McRemapperInfoResponse;
+import ru.feodorkek.dev.mcremapper.dto.request.MaybeRemapRequest;
+import ru.feodorkek.dev.mcremapper.dto.response.MaybeRemapResponse;
+import ru.feodorkek.dev.mcremapper.dto.response.McRemapperInfoResponse;
 import ru.feodorkek.dev.mcremapper.usecase.McRemapperUseCases;
 
 @Tag(name = "McRemapper public usages")
@@ -30,8 +30,7 @@ public class McRemapperPublicRestController {
 
     @Operation(summary = "Remap input minecraft source code")
     @PostMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-maybe-remap}")
-    public ResponseEntity<MaybeRemapResponse> maybeRemap(
-            @RequestBody final MaybeRemapRequest request) {
+    public ResponseEntity<MaybeRemapResponse> maybeRemap(@RequestBody final MaybeRemapRequest request) {
         return ResponseEntity.ok(useCases.maybeRemap(request));
     }
 

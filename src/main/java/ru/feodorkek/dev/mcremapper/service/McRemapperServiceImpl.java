@@ -63,14 +63,17 @@ public class McRemapperServiceImpl implements McRemapperService {
             throw new McRemapperException(String.format("Mapped source length should be less than %s chars",
                     maybeRemapSourceMaxLen));
         }
+
         final var remapEntries = new ArrayList<RemapEntry>();
         final var result = new StringBuilder();
         final var lines = mappedSource.split("\n");
+
         try {
             for (int lineNumber = 0; lineNumber < lines.length; lineNumber++) {
                 final var line = lineNumber < lines.length - 1 ? lines[lineNumber] + "\n" : lines[lineNumber];
                 final var matcher = currentProvider.getRemapPattern().matcher(line);
                 int offset = 0;
+
                 while (matcher.find()) {
                     var mappedValue = matcher.group();
                     var remappedValue = currentProvider.getMappings().getOrDefault(mappedValue, mappedValue);

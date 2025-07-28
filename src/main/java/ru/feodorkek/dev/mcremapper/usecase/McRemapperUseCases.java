@@ -1,8 +1,8 @@
 package ru.feodorkek.dev.mcremapper.usecase;
 
-import ru.feodorkek.dev.mcremapper.dto.MaybeRemapRequest;
-import ru.feodorkek.dev.mcremapper.dto.MaybeRemapResponse;
-import ru.feodorkek.dev.mcremapper.dto.McRemapperInfoResponse;
+import ru.feodorkek.dev.mcremapper.dto.request.MaybeRemapRequest;
+import ru.feodorkek.dev.mcremapper.dto.response.MaybeRemapResponse;
+import ru.feodorkek.dev.mcremapper.dto.response.McRemapperInfoResponse;
 
 public interface McRemapperUseCases {
 
