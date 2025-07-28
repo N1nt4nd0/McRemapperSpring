@@ -6,11 +6,11 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties("mc-remapper.web.rest.endpoints.public")
-public class RestPublicEndpointsProperties {
+@ConfigurationProperties("web.rest.endpoints")
+public class RestEndpointsProperties {
 
     private String ping;
-    private String mcRemapperInfo;
-    private String mcRemapperMaybeRemap;
+    private String info;
+    private String maybeRemap;
 
 }

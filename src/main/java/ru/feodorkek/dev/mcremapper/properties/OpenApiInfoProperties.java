@@ -6,7 +6,7 @@ import org.springframework.context.annotation.Configuration;
 
 @Data
 @Configuration
-@ConfigurationProperties("mc-remapper.web.rest.api-info")
+@ConfigurationProperties("web.rest.api-info")
 public class OpenApiInfoProperties {
 
     private String title;

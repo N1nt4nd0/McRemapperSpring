@@ -14,30 +14,30 @@ import ru.feodorkek.dev.mcremapper.dto.response.MaybeRemapResponse;
 import ru.feodorkek.dev.mcremapper.dto.response.McRemapperInfoResponse;
 import ru.feodorkek.dev.mcremapper.usecase.McRemapperUseCases;
 
-@Tag(name = "McRemapper public usages")
+@Tag(name = "McRemapper usages")
 @CrossOrigin
 @RestController
 @RequiredArgsConstructor
-public class McRemapperPublicRestController {
+public class McRemapperRestController {
 
     private final McRemapperUseCases useCases;
 
-    @Operation(summary = "Ping endpoint")
-    @GetMapping("${mc-remapper.web.rest.endpoints.public.ping}")
+    @Operation(summary = "ping endpoint")
+    @GetMapping("${web.rest.endpoints.ping}")
     public ResponseEntity<String> ping() {
         return ResponseEntity.ok("pong");
     }
 
-    @Operation(summary = "Remap input minecraft source code")
-    @PostMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-maybe-remap}")
-    public ResponseEntity<MaybeRemapResponse> maybeRemap(@RequestBody final MaybeRemapRequest request) {
-        return ResponseEntity.ok(useCases.maybeRemap(request));
-    }
-
-    @Operation(summary = "Get info")
-    @GetMapping("${mc-remapper.web.rest.endpoints.public.mc-remapper-info}")
+    @Operation(summary = "get info")
+    @GetMapping("${web.rest.endpoints.info}")
     public ResponseEntity<McRemapperInfoResponse> getInfo() {
         return ResponseEntity.ok(useCases.getInfo());
+    }
+
+    @Operation(summary = "remap input minecraft source code")
+    @PostMapping("${web.rest.endpoints.maybe-remap}")
+    public ResponseEntity<MaybeRemapResponse> maybeRemap(@RequestBody final MaybeRemapRequest request) {
+        return ResponseEntity.ok(useCases.maybeRemap(request));
     }
 
 }

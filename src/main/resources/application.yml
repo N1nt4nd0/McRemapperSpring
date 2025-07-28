@@ -42,18 +42,17 @@ mc-remapper:
       remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
       methods-resource-path: /mappings/mc1710/methods.csv
       fields-resource-path: /mappings/mc1710/fields.csv
-  web:
-    mvc:
-      endpoints:
-        public:
-          index: /
-    rest:
-      api-info:
-        title: McRemapper API
-        version: 0.0.1
-        author-email: feodor.kekovich@gmail.com
-      endpoints:
-        public:
-          ping: /api/public/ping
-          mc-remapper-info: /api/public/mcremapper/info
-          mc-remapper-maybe-remap: /api/public/mcremapper/maybe_remap
+
+web:
+  mvc:
+    endpoints:
+      index: /
+  rest:
+    api-info:
+      title: McRemapper API
+      version: 0.0.2
+      author-email: feodor.kekovich@gmail.com
+    endpoints:
+      ping: /api/ping
+      info: /api/info
+      maybe-remap: /api/maybe_remap

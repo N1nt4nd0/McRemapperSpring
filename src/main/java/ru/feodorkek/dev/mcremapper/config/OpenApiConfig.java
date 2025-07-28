@@ -12,14 +12,14 @@ import ru.feodorkek.dev.mcremapper.properties.OpenApiInfoProperties;
 @RequiredArgsConstructor
 public class OpenApiConfig {
 
-    private final OpenApiInfoProperties infoProperties;
+    private final OpenApiInfoProperties apiInfoProperties;
 
     @Bean
     public OpenAPI openApiDefinition() {
         return new OpenAPI().info(new Info()
-                .title(infoProperties.getTitle())
-                .version(infoProperties.getVersion())
-                .contact(new Contact().email(infoProperties.getAuthorEmail())));
+                .title(apiInfoProperties.getTitle())
+                .version(apiInfoProperties.getVersion())
+                .contact(new Contact().email(apiInfoProperties.getAuthorEmail())));
     }
 
 }
