@@ -14,8 +14,8 @@ public class McRemapperUseCasesImpl implements McRemapperUseCases {
 
     @Override
     public MaybeRemapResponse maybeRemap(final MaybeRemapRequest request) {
-        remapperService.setCurrentProvider(request.getMcRemapperProviderName());
-        return new MaybeRemapResponse(remapperService.maybeRemap(request.getMappedSource()));
+        remapperService.setCurrentProvider(request.mcRemapperProviderName());
+        return new MaybeRemapResponse(remapperService.maybeRemap(request.mappedSource()));
     }
 
 }

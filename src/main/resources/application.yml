@@ -1,6 +1,6 @@
 spring:
   application:
-    name: McRemapper
+    name: mc-remapper
 
 server:
   servlet:

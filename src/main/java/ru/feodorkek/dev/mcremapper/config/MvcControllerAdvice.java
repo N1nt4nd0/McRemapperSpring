@@ -4,10 +4,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import ru.feodorkek.dev.mcremapper.controller.mvc.MvcControllerPackage;
+import ru.feodorkek.dev.mcremapper.controller.mvc.ControllerPackage;
 
 @Slf4j
-@ControllerAdvice(basePackageClasses = MvcControllerPackage.class)
+@ControllerAdvice(basePackageClasses = ControllerPackage.class)
 public class MvcControllerAdvice {
 
     @ExceptionHandler

@@ -5,12 +5,12 @@ Now deployed at [https://mcremapper.onrender.com/](https://mcremapper.onrender.c
 How it works:
 
 1. Select minecraft version you are working with.
-2. Paste code with mpped names in editor.
+2. Paste code with mapped names in editor.
 3. It will automatically replace mapped names to original names.
 
 Example:
 
-Input clipboard text (minecraft 1.7.10 decompilled source):
+Input clipboard text (minecraft 1.7.10 decompiled source):
 ```
 public void func_149726_b(World world, int x, int y, int z) {
   super.func_149726_b(world, x, y, z);

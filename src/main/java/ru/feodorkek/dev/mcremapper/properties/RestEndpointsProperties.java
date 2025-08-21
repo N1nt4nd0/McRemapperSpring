@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Configuration;
 public class RestEndpointsProperties {
 
     private String ping;
-    private String info;
     private String maybeRemap;
 
 }

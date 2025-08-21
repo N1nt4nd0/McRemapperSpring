@@ -1,27 +1,20 @@
 package ru.feodorkek.dev.mcremapper.config;
 
-import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.convert.ConversionService;
 import org.springframework.core.convert.support.DefaultConversionService;
-import ru.feodorkek.dev.mcremapper.properties.converters.PatternConverter;
+
+import java.util.regex.Pattern;
 
 @Configuration
-@RequiredArgsConstructor
 public class PropertiesConvertersConfig {
 
-    private final PatternConverter patternConverter;
-
     @Bean
-    public DefaultConversionService defaultConversionService() {
-        return new DefaultConversionService();
-    }
-
-    @Bean
-    public ConversionService conversionService(final DefaultConversionService defaultConversionService) {
-        defaultConversionService.addConverter(patternConverter);
-        return defaultConversionService;
+    public ConversionService conversionService() {
+        final var conversionService = new DefaultConversionService();
+        conversionService.addConverter(String.class, Pattern.class, Pattern::compile);
+        return conversionService;
     }
 
 }

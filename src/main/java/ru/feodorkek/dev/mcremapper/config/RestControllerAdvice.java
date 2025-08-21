@@ -4,11 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
-import ru.feodorkek.dev.mcremapper.controller.rest.RestControllerPackage;
+import ru.feodorkek.dev.mcremapper.controller.rest.ControllerPackage;
 import ru.feodorkek.dev.mcremapper.dto.response.ExceptionResponse;
 
 @Slf4j
-@ControllerAdvice(basePackageClasses = RestControllerPackage.class)
+@ControllerAdvice(basePackageClasses = ControllerPackage.class)
 public class RestControllerAdvice {
 
     @ExceptionHandler

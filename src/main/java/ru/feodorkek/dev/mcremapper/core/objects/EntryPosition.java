@@ -1,11 +1,4 @@
 package ru.feodorkek.dev.mcremapper.core.objects;
 
-import lombok.Value;
-
-@Value
-public class EntryPosition {
-
-    int line;
-    int ch;
-
+public record EntryPosition(int line, int ch) {
 }

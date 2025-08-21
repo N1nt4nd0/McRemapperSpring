@@ -1,4 +1,4 @@
 package ru.feodorkek.dev.mcremapper.controller.mvc;
 
-public @interface MvcControllerPackage {
+public interface ControllerPackage {
 }

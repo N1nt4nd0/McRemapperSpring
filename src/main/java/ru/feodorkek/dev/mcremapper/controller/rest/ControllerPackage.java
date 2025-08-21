@@ -1,4 +1,4 @@
 package ru.feodorkek.dev.mcremapper.controller.rest;
 
-public @interface RestControllerPackage {
+public interface ControllerPackage {
 }
