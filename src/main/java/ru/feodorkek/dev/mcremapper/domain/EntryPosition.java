@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.core.objects;
+package ru.feodorkek.dev.mcremapper.domain;
 
 public record EntryPosition(int line, int ch) {
 }

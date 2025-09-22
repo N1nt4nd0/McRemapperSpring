@@ -12,10 +12,11 @@ import ru.feodorkek.dev.mcremapper.dto.response.ExceptionResponse;
 public class RestControllerAdvice {
 
     @ExceptionHandler
-    public ResponseEntity<ExceptionResponse> handleException(final Exception exception) {
-        log.error("RestController exception occurred: {}", exception.getMessage());
+    public ResponseEntity<ExceptionResponse> handleGenericException(final Exception exception) {
+        final var exceptionType = exception.getClass().getSimpleName();
+        log.error("RestController exception occurred: [{}]: {}", exceptionType, exception.getMessage());
         return ResponseEntity.internalServerError()
-                .body(new ExceptionResponse(exception.getClass().getSimpleName(), exception.getMessage()));
+                .body(new ExceptionResponse(exceptionType, exception.getMessage()));
     }
 
 }

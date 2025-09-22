@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.core.objects;
+package ru.feodorkek.dev.mcremapper.domain;
 
 import java.util.List;
 

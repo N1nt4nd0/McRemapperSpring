@@ -1,7 +1,7 @@
 package ru.feodorkek.dev.mcremapper.service;
 
-import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
-import ru.feodorkek.dev.mcremapper.core.objects.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.McRemapperProvider;
 
 import java.util.List;
 

@@ -2,7 +2,7 @@ package ru.feodorkek.dev.mcremapper.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
+import ru.feodorkek.dev.mcremapper.domain.McRemapperProvider;
 import ru.feodorkek.dev.mcremapper.properties.McRemapperProperties;
 import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
 import ru.feodorkek.dev.mcremapper.service.McRemapperService;

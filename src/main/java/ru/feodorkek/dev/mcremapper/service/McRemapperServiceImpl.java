@@ -2,10 +2,10 @@ package ru.feodorkek.dev.mcremapper.service;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
-import ru.feodorkek.dev.mcremapper.core.McRemapperProvider;
-import ru.feodorkek.dev.mcremapper.core.objects.EntryPosition;
-import ru.feodorkek.dev.mcremapper.core.objects.MaybeRemapResult;
-import ru.feodorkek.dev.mcremapper.core.objects.RemapEntry;
+import ru.feodorkek.dev.mcremapper.domain.EntryPosition;
+import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.McRemapperProvider;
+import ru.feodorkek.dev.mcremapper.domain.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.McRemapperException;
 
 import java.util.ArrayList;

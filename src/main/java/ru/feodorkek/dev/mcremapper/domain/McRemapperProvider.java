@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.core;
+package ru.feodorkek.dev.mcremapper.domain;
 
 import lombok.Getter;
 import lombok.NonNull;
