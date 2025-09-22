@@ -28,7 +28,6 @@ public class MappingsLoaderServiceImpl implements MappingsLoaderService {
             try (final var reader = new BufferedReader(new InputStreamReader(resource.getInputStream(),
                     StandardCharsets.UTF_8))) {
                 return loadMappingsFromLines(reader.lines());
-
             }
         } catch (final Exception exception) {
             throw new McRemapperException("Exception on loading mappings from resource path: " + resourcePath,
