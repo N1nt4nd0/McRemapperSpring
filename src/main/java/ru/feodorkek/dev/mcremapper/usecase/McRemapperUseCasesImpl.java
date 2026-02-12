@@ -9,13 +9,13 @@ import ru.feodorkek.dev.mcremapper.service.McRemapperService;
 @Service
 @RequiredArgsConstructor
 public class McRemapperUseCasesImpl implements McRemapperUseCases {
-
+    
     private final McRemapperService remapperService;
-
+    
     @Override
-    public MaybeRemapResponse maybeRemap(final MaybeRemapRequest request) {
-        remapperService.setCurrentProvider(request.mcRemapperProviderName());
-        return new MaybeRemapResponse(remapperService.maybeRemap(request.mappedSource()));
+    public MaybeRemapResponse maybeRemap( final MaybeRemapRequest request ) {
+        remapperService.setCurrentProvider( request.mcRemapperProviderName() );
+        return new MaybeRemapResponse( remapperService.maybeRemap( request.mappedSource() ) );
     }
-
+    
 }

@@ -9,50 +9,41 @@ server:
       charset: UTF-8
   port: ${PORT:8080}
 
-web:
-  mvc:
-    endpoints:
-      index: /
-  rest:
-    api-info:
-      title: McRemapper API
-      version: 0.0.2
-      author-email: feodor.kekovich@gmail.com
-    endpoints:
-      ping: /api/ping
-      maybe-remap: /api/maybe_remap
+api-info:
+  title: McRemapper API
+  version: ${API_VERSION:0.0.1}
 
 mc-remapper:
-  maybe-remap-source-min-len: 4
-  maybe-remap-source-max-len: 20000
+  remap-source-min-len: ${MC_REMAPPER_REMAP_SOURCE_MIN_LEN:4}
+  remap-source-max-len: ${MC_REMAPPER_REMAP_SOURCE_MAX_LEN:20000}
   providers:
     mc-1201:
-      order: 4
-      name: 1.20.1
-      remap-pattern: "(m|f)_\\d+_"
-      methods-resource-path: /mappings/mc1201/methods.csv
-      fields-resource-path: /mappings/mc1201/fields.csv
+      order: ${MC_REMAPPER_PROVIDER_MC_1201_ORDER:4}
+      name: ${MC_REMAPPER_PROVIDER_MC_1201_NAME:1.20.1}
+      remap-pattern: "${MC_REMAPPER_PROVIDER_MC_1201_REMAP_PATTERN:(m|f)_\\d+_}"
+      methods-resource-path: ${MC_REMAPPER_PROVIDER_MC_1201_METHODS_RESOURCE_PATH:/mappings/mc1201/methods.csv}
+      fields-resource-path: ${MC_REMAPPER_PROVIDER_MC_1201_FIELDS_RESOURCE_PATH:/mappings/mc1201/fields.csv}
     mc-1192:
-      order: 3
-      name: 1.19.2
-      remap-pattern: "(m|f)_\\d+_"
-      methods-resource-path: /mappings/mc1192/methods.csv
-      fields-resource-path: /mappings/mc1192/fields.csv
+      order: ${MC_REMAPPER_PROVIDER_MC_1192_ORDER:3}
+      name: ${MC_REMAPPER_PROVIDER_MC_1192_NAME:1.19.2}
+      remap-pattern: "${MC_REMAPPER_PROVIDER_MC_1192_REMAP_PATTERN:(m|f)_\\d+_}"
+      methods-resource-path: ${MC_REMAPPER_PROVIDER_MC_1192_METHODS_RESOURCE_PATH:/mappings/mc1192/methods.csv}
+      fields-resource-path: ${MC_REMAPPER_PROVIDER_MC_1192_FIELDS_RESOURCE_PATH:/mappings/mc1192/fields.csv}
     mc-1165:
-      order: 2
-      name: 1.16.5
-      remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
-      methods-resource-path: /mappings/mc1165/methods.csv
-      fields-resource-path: /mappings/mc1165/fields.csv
+      order: ${MC_REMAPPER_PROVIDER_MC_1165_ORDER:2}
+      name: ${MC_REMAPPER_PROVIDER_MC_1165_NAME:1.16.5}
+      remap-pattern: "${MC_REMAPPER_PROVIDER_MC_1165_REMAP_PATTERN:(field|func)_\\d+_[a-zA-Z]{1,2}_?}"
+      methods-resource-path: ${MC_REMAPPER_PROVIDER_MC_1165_METHODS_RESOURCE_PATH:/mappings/mc1165/methods.csv}
+      fields-resource-path: ${MC_REMAPPER_PROVIDER_MC_1165_FIELDS_RESOURCE_PATH:/mappings/mc1165/fields.csv}
     mc-1122:
-      order: 1
-      name: 1.12.2
-      remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
-      methods-resource-path: /mappings/mc1122/methods.csv
-      fields-resource-path: /mappings/mc1122/fields.csv
+      order: ${MC_REMAPPER_PROVIDER_MC_1122_ORDER:1}
+      name: ${MC_REMAPPER_PROVIDER_MC_1122_NAME:1.12.2}
+      remap-pattern: "${MC_REMAPPER_PROVIDER_MC_1122_REMAP_PATTERN:(field|func)_\\d+_[a-zA-Z]{1,2}_?}"
+      methods-resource-path: ${MC_REMAPPER_PROVIDER_MC_1122_METHODS_RESOURCE_PATH:/mappings/mc1122/methods.csv}
+      fields-resource-path: ${MC_REMAPPER_PROVIDER_MC_1122_FIELDS_RESOURCE_PATH:/mappings/mc1122/fields.csv}
     mc-1710:
-      order: 0
-      name: 1.7.10
-      remap-pattern: "(field|func)_\\d+_[a-zA-Z]{1,2}_?"
-      methods-resource-path: /mappings/mc1710/methods.csv
-      fields-resource-path: /mappings/mc1710/fields.csv
+      order: ${MC_REMAPPER_PROVIDER_MC_1710_ORDER:0}
+      name: ${MC_REMAPPER_PROVIDER_MC_1710_NAME:1.7.10}
+      remap-pattern: "${MC_REMAPPER_PROVIDER_MC_1710_REMAP_PATTERN:(field|func)_\\d+_[a-zA-Z]{1,2}_?}"
+      methods-resource-path: ${MC_REMAPPER_PROVIDER_MC_1710_METHODS_RESOURCE_PATH:/mappings/mc1710/methods.csv}
+      fields-resource-path: ${MC_REMAPPER_PROVIDER_MC_1710_FIELDS_RESOURCE_PATH:/mappings/mc1710/fields.csv}

@@ -1,22 +1,17 @@
 package ru.feodorkek.dev.mcremapper.service;
 
-import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
-import ru.feodorkek.dev.mcremapper.domain.McRemapperProvider;
-
 import java.util.List;
+import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 
 public interface McRemapperService {
-
-    List<String> getRegisteredProviderNames();
-
-    void setCurrentProvider(String providerName);
-
-    void registerProvider(McRemapperProvider mcRemapperProvider);
-
-    int getMaybeRemapSourceMinLen();
-
-    int getMaybeRemapSourceMaxLen();
-
-    MaybeRemapResult maybeRemap(String mappedSource);
-
+    
+    List<String> getRegisteredProvidersNames();
+    
+    void registerProvider( RemapperProvider provider );
+    
+    void setCurrentProvider( String providerName );
+    
+    MaybeRemapResult maybeRemap( String mappedSource );
+    
 }

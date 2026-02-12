@@ -1,6 +1,21 @@
 ### Web application for minecraft developers, which automatically replace mapped methods and fields names to original names.
 
-Now deployed at [https://mcremapper.onrender.com/](https://mcremapper.onrender.com/)
+Deployed at [https://mcremapper.onrender.com](https://mcremapper.onrender.com)
+
+Local run:
+
+1. Install java 17 or higher.
+2. Download project source.
+3. Open console in root project directory.
+4. Run one of the following commands:
+    ```
+    # Windows CMD
+    set PORT=8080 && gradlew clean bootRun
+    
+    # Linux/macOS
+    PORT=8080 ./gradlew clean bootRun
+    ```
+5. Open in your browser: [http://localhost:8080](http://localhost:8080)
 
 How it works:
 
