@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.service;
+package ru.feodorkek.dev.mcremapper.service.impl;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -10,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import ru.feodorkek.dev.mcremapper.exception.MappingsLoadException;
+import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
 
 @Service
 @RequiredArgsConstructor

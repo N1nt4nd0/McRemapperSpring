@@ -1,10 +1,11 @@
-package ru.feodorkek.dev.mcremapper.usecase;
+package ru.feodorkek.dev.mcremapper.usecase.impl;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.feodorkek.dev.mcremapper.dto.request.MaybeRemapRequest;
 import ru.feodorkek.dev.mcremapper.dto.response.MaybeRemapResponse;
 import ru.feodorkek.dev.mcremapper.service.McRemapperService;
+import ru.feodorkek.dev.mcremapper.usecase.McRemapperUseCases;
 
 @Service
 @RequiredArgsConstructor

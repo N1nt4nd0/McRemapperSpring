@@ -1,4 +1,4 @@
-package ru.feodorkek.dev.mcremapper.service;
+package ru.feodorkek.dev.mcremapper.service.impl;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -12,6 +12,7 @@ import ru.feodorkek.dev.mcremapper.domain.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.RemapperProviderException;
 import ru.feodorkek.dev.mcremapper.exception.RemappingException;
 import ru.feodorkek.dev.mcremapper.properties.RemapperProperties;
+import ru.feodorkek.dev.mcremapper.service.McRemapperService;
 
 public class McRemapperServiceImpl implements McRemapperService {
     

@@ -6,18 +6,17 @@ import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 import ru.feodorkek.dev.mcremapper.properties.RemapperProperties;
 import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
 import ru.feodorkek.dev.mcremapper.service.McRemapperService;
-import ru.feodorkek.dev.mcremapper.service.McRemapperServiceImpl;
+import ru.feodorkek.dev.mcremapper.service.impl.McRemapperServiceImpl;
 
 @Configuration
 public class McRemapperConfig {
     
     @Bean
-    public McRemapperService mcRemapperService( final MappingsLoaderService loaderService,
-                                                final RemapperProperties properties ) {
-        final var remapperService = new McRemapperServiceImpl( properties );
+    public McRemapperService createRemapperService( final MappingsLoaderService loaderService,
+                                                    final RemapperProperties properties ) {
+        final var service = new McRemapperServiceImpl( properties );
         
         for( final var providerProperty : properties.getProviders().values() ) {
-            
             final var methodsMappings = loaderService.loadMappingsFromResourcePath( providerProperty.getMethodsResourcePath() );
             final var fieldsMappings = loaderService.loadMappingsFromResourcePath( providerProperty.getFieldsResourcePath() );
             
@@ -28,11 +27,10 @@ public class McRemapperConfig {
             provider.loadMappings( methodsMappings );
             provider.loadMappings( fieldsMappings );
             
-            remapperService.registerProvider( provider );
-            
+            service.registerProvider( provider );
         }
         
-        return remapperService;
+        return service;
     }
     
 }
