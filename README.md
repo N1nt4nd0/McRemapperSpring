@@ -1,6 +1,6 @@
 ### Web application for minecraft developers, which automatically replace mapped methods and fields names to original names.
 
-Deployed at [https://mcremapper.onrender.com](https://mcremapper.onrender.com)
+Now deployed at: [https://mcremapper.onrender.com](https://mcremapper.onrender.com)
 
 Local run:
 
