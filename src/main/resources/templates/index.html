@@ -26,7 +26,6 @@
 </footer>
 <script th:inline='javascript'>
     'use strict'
-    const maybeRemapApi = /*[[${maybeRemapApi}]]*/ '';
 
     const editor = CodeMirror(document.getElementById('editor'), {
         mode: 'text/x-java',
@@ -43,7 +42,7 @@
             mappedSource: mappedSource
         }
         try {
-            const response = await fetch(maybeRemapApi, {
+            const response = await fetch('/api/maybe_remap', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

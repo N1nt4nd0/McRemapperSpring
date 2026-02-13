@@ -6,21 +6,21 @@ import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import ru.feodorkek.dev.mcremapper.domain.EntryPosition;
-import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.RemapResult;
 import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 import ru.feodorkek.dev.mcremapper.domain.RemapEntry;
 import ru.feodorkek.dev.mcremapper.exception.RemapperProviderException;
 import ru.feodorkek.dev.mcremapper.exception.RemappingException;
 import ru.feodorkek.dev.mcremapper.properties.RemapperProperties;
-import ru.feodorkek.dev.mcremapper.service.McRemapperService;
+import ru.feodorkek.dev.mcremapper.service.RemappingService;
 
-public class McRemapperServiceImpl implements McRemapperService {
+public class RemappingServiceImpl implements RemappingService {
     
     private final Map<String, RemapperProvider> providers;
     private final RemapperProperties properties;
     private RemapperProvider currentProvider;
     
-    public McRemapperServiceImpl( final RemapperProperties properties ) {
+    public RemappingServiceImpl( final RemapperProperties properties ) {
         this.providers = new HashMap<>();
         this.properties = properties;
     }
@@ -53,7 +53,7 @@ public class McRemapperServiceImpl implements McRemapperService {
     }
     
     @Override
-    public MaybeRemapResult maybeRemap( final String mappedSource ) {
+    public RemapResult maybeRemap( final String mappedSource ) {
         if( currentProvider == null ) {
             throw new RemappingException( "Current provider not set" );
         }
@@ -97,9 +97,9 @@ public class McRemapperServiceImpl implements McRemapperService {
                 matcher.appendTail( result );
             }
             
-            return new MaybeRemapResult( remapEntries.size(),
-                                         remapEntries,
-                                         result.toString() );
+            return new RemapResult( remapEntries.size(),
+                                    remapEntries,
+                                    result.toString() );
         } catch( final Exception exception ) {
             throw new RemappingException( "Exception on remapping source", exception );
         }

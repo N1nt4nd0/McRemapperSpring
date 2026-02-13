@@ -1,10 +1,10 @@
 package ru.feodorkek.dev.mcremapper.service;
 
 import java.util.List;
-import ru.feodorkek.dev.mcremapper.domain.MaybeRemapResult;
+import ru.feodorkek.dev.mcremapper.domain.RemapResult;
 import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 
-public interface McRemapperService {
+public interface RemappingService {
     
     List<String> getRegisteredProvidersNames();
     
@@ -12,6 +12,6 @@ public interface McRemapperService {
     
     void setCurrentProvider( String providerName );
     
-    MaybeRemapResult maybeRemap( String mappedSource );
+    RemapResult maybeRemap( String mappedSource );
     
 }
