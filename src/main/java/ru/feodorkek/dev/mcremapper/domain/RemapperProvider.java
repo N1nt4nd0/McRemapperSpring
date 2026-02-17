@@ -30,7 +30,7 @@ public class RemapperProvider implements Comparable<RemapperProvider> {
     
     public void loadMappings( final Map<String, String> mappings ) {
         if( mappings == null || mappings.isEmpty() ) {
-            throw new MappingsLoadException( "No input mappings found" );
+            throw new MappingsLoadException( "No input mappings found for provider: {0}", name );
         }
         
         this.mappings.putAll( mappings );

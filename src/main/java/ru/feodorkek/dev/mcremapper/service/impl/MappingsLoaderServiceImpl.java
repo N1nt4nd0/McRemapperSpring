@@ -6,18 +6,16 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import lombok.RequiredArgsConstructor;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import ru.feodorkek.dev.mcremapper.exception.MappingsLoadException;
 import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
 
 @Service
-@RequiredArgsConstructor
 public class MappingsLoaderServiceImpl implements MappingsLoaderService {
     
     @Override
-    public Map<String, String> loadMappingsFromResourcePath( final String resourcePath ) {
+    public Map<String, String> loadMappingsFromResource( final String resourcePath ) {
         try {
             final var resource = new ClassPathResource( resourcePath );
             

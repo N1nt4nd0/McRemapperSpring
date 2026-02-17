@@ -4,6 +4,6 @@ import java.util.Map;
 
 public interface MappingsLoaderService {
     
-    Map<String, String> loadMappingsFromResourcePath( String resourcePath );
+    Map<String, String> loadMappingsFromResource( String resourcePath );
     
 }

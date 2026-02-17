@@ -13,12 +13,12 @@ import ru.feodorkek.dev.mcremapper.service.RemappingService;
 @RequiredArgsConstructor
 public class McRemapperMvcController {
     
-    private final RemappingService remapperService;
+    private final RemappingService remappingService;
     private final RemapperProperties properties;
     
     @GetMapping( "/" )
     public String indexPage( final Model model ) {
-        model.addAttribute( "mcVersions", remapperService.getRegisteredProvidersNames() );
+        model.addAttribute( "mcVersions", remappingService.getRegisteredProvidersNames() );
         model.addAttribute( "sourceMinLen", properties.getRemapSourceMinLen() );
         model.addAttribute( "sourceMaxLen", properties.getRemapSourceMaxLen() );
         return "index";

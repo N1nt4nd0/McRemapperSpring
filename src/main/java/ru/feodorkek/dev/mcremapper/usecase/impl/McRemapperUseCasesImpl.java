@@ -11,12 +11,12 @@ import ru.feodorkek.dev.mcremapper.usecase.McRemapperUseCases;
 @RequiredArgsConstructor
 public class McRemapperUseCasesImpl implements McRemapperUseCases {
     
-    private final RemappingService remapperService;
+    private final RemappingService remappingService;
     
     @Override
     public RemapResponse maybeRemap( final RemapRequest request ) {
-        remapperService.setCurrentProvider( request.mcRemapperProviderName() );
-        return new RemapResponse( remapperService.maybeRemap( request.mappedSource() ) );
+        remappingService.setCurrentProvider( request.mcRemapperProviderName() );
+        return new RemapResponse( remappingService.maybeRemap( request.mappedSource() ) );
     }
     
 }
