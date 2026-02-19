@@ -1,7 +1,7 @@
 package ru.feodorkek.dev.mcremapper.service;
 
 import java.util.List;
-import ru.feodorkek.dev.mcremapper.domain.RemapResult;
+import ru.feodorkek.dev.mcremapper.dto.RemapResult;
 import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 
 public interface RemappingService {
