@@ -10,8 +10,6 @@ public interface RemappingService {
     
     void registerProvider( RemapperProvider provider );
     
-    void setCurrentProvider( String providerName );
-    
-    RemapResult maybeRemap( String mappedSource );
+    RemapResult maybeRemap( String providerName, String mappedSource );
     
 }
