@@ -65,7 +65,7 @@ public class RemappingServiceImpl implements RemappingService {
         final var lines = mappedSource.split( "\n" );
         
         try {
-            for( int lineNumber = 0; lineNumber < lines.length; lineNumber++ ) {
+            for( var lineNumber = 0; lineNumber < lines.length; lineNumber++ ) {
                 final var line = lineNumber < lines.length - 1 ? lines[ lineNumber ] + "\n" : lines[ lineNumber ];
                 
                 final var matcher = provider.getRemapPattern().matcher( line );
@@ -73,13 +73,14 @@ public class RemappingServiceImpl implements RemappingService {
                 var offset = 0;
                 
                 while( matcher.find() ) {
-                    var mappedValue = matcher.group();
-                    var remappedValue = provider.getMappings().getOrDefault( mappedValue, mappedValue );
+                    final var mappedValue = matcher.group();
+                    final var remappedValue = provider.getMappings().getOrDefault( mappedValue, mappedValue );
+                    
                     matcher.appendReplacement( result, Matcher.quoteReplacement( remappedValue ) );
                     
                     if( !mappedValue.equals( remappedValue ) ) {
-                        var newStart = matcher.start() + offset;
-                        var newEnd = newStart + remappedValue.length();
+                        final var newStart = matcher.start() + offset;
+                        final var newEnd = newStart + remappedValue.length();
                         offset += remappedValue.length() - mappedValue.length();
                         final var startPosition = new EntryPosition( lineNumber, newStart );
                         final var endPosition = new EntryPosition( lineNumber, newEnd );
