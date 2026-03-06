@@ -6,11 +6,13 @@ import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.stereotype.Service;
 import ru.feodorkek.dev.mcremapper.exception.MappingsLoadException;
 import ru.feodorkek.dev.mcremapper.service.MappingsLoaderService;
 
+@Slf4j
 @Service
 public class MappingsLoaderServiceImpl implements MappingsLoaderService {
     
@@ -23,7 +25,8 @@ public class MappingsLoaderServiceImpl implements MappingsLoaderService {
                 return loadMappingsFromLines( reader.lines() );
             }
         } catch( final Exception exception ) {
-            throw new MappingsLoadException( "Exception on loading mappings from resource path: {0}", exception, resourcePath );
+            log.error( "Exception on loading mappings from resource path: {}. Error message: {}", resourcePath, exception.getMessage(), exception );
+            throw new MappingsLoadException( "Exception on loading mappings from resource path: {0}. Error message: {1}", exception, resourcePath, exception.getMessage() );
         }
     }
     

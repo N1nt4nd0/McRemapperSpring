@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
+import lombok.extern.slf4j.Slf4j;
 import ru.feodorkek.dev.mcremapper.domain.RemapperProvider;
 import ru.feodorkek.dev.mcremapper.dto.EntryPosition;
 import ru.feodorkek.dev.mcremapper.dto.RemapEntry;
@@ -13,6 +14,7 @@ import ru.feodorkek.dev.mcremapper.exception.RemappingException;
 import ru.feodorkek.dev.mcremapper.properties.RemapperProperties;
 import ru.feodorkek.dev.mcremapper.service.RemappingService;
 
+@Slf4j
 public class RemappingServiceImpl implements RemappingService {
     
     private final Map<String, RemapperProvider> providers;
@@ -94,7 +96,8 @@ public class RemappingServiceImpl implements RemappingService {
                                     remapEntries,
                                     result.toString() );
         } catch( final Exception exception ) {
-            throw new RemappingException( "Exception on remapping source", exception );
+            log.error( "Exception on remapping source: {}", exception.getMessage(), exception );
+            throw new RemappingException( "Exception on remapping source: {0}", exception, exception.getMessage() );
         }
     }
     
